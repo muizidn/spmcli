@@ -1,0 +1,11 @@
+#!/usr/bin/env python3
+from src.find_config import find_config
+from src.parse_yaml import parse_yaml
+from src.compute_arguments import compute_arguments
+from src.invoke_spm import invoke_spm
+
+config_path = find_config()
+data = parse_yaml(config_path)
+args = compute_arguments(data)
+invoke_spm(args)
+exit(0)
