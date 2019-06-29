@@ -7,15 +7,15 @@ You have bad days when should working with Swift Package Manager in command line
 Here let's do our work.
 ```
 # SPMCLI.yaml
-
-build:
-    linux:
+linux:
+    build:
         Xswiftc: 
             - "-target"
             - "-DDEBUG"
         Xcc:
             - "-DHAVE_INTTYPES_H"
-    darwin:
+mac:
+    build:
         Xlinker:
             - "./libHello.a"
 ```

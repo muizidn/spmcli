@@ -3,7 +3,8 @@ __FINAL_ARG__ = ""
 def add_arg(args):
     global __FINAL_ARG__
     for arg in args:
-        __FINAL_ARG__ += f"{arg} "
+        if arg:
+            __FINAL_ARG__ += f"{arg} "
 
 def build(config):
     global __FINAL_ARG__
