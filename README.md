@@ -4,7 +4,9 @@ You have bad days when should working with Swift Package Manager in command line
 1. Tedious flags
 2. Or, you don't want to manage script files?
 
-Here let's do our work.
+Now, it will be fun!
+
+1. Write your flags in SPMCLI.yaml
 ```
 # SPMCLI.yaml
 linux:
@@ -19,3 +21,8 @@ mac:
         Xlinker:
             - "./libHello.a"
 ```
+2. Invoke `spmcli build`
+
+# How to install
+This helper script will be available through `pip`, make sure you have Python3 in your system.
+For now, just install it using `git`.
