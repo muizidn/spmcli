@@ -6,6 +6,9 @@ You have bad days when should working with Swift Package Manager in command line
 
 Now, it will be fun!
 
+# Requirement
+Python 3
+
 1. Write your flags in SPMCLI.yaml
 ```
 # SPMCLI.yaml
@@ -28,4 +31,14 @@ See example in [SPMCLI.yaml](SPMCLI.yaml)
 # How to install
 This helper script will be available through `pip`, make sure you have Python3 in your system.
 
-For now, you can install using `git` and update your PATH to root directory or using PyInstaller and update PATH to dist directory.
+For now, you can install using this way.
+### Git
+```
+git clone git clone https://github.com/muizidn/spmcli.git
+cd spmcli
+pip3 install -r requirements.txt
+pyinstaller --onefile spmcli
+export PATH=${PWD}/dist:$PATH
+#or update your .bashrc
+```
+###
