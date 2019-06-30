@@ -21,7 +21,10 @@ def __flatmap_config(config, subcommand):
     config = config[subcommand]
     for option in config.keys():
         values = config[option]
-        if not values: continue
+        if not values:
+            final_arg += f"{option} "
+            continue
+            
         for value in values:
             if value is iter(value) and not value is str:
                 for arg in value:
