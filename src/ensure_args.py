@@ -1,21 +1,20 @@
-from sys import argv
+from sys import argv, exit
 from re import search
 from collections import namedtuple
 from .check_platform import check_platform
 from .global_variable import *
 
-__COMMAND_REGEX__ = r"(?:\./spmcli|spmcli) (run|build|test) *(linux|mac|windows|ios|android|) *(.*)"
+__COMMAND_REGEX__ = r"(?:.*spmcli|spmcli) (run|build|test) *(linux|mac|windows|ios|android|) *(.*)"
 
 def ensure_args():
     args_len = len(argv)
     platform = check_platform()
     error_msg = f"""
-        {argv}
-        Usage: spmcli (run|build|test) (linux|mac|windows|ios|android)opt [other]opt
-
-            (platform)opt         optional argument - current default {platform}
-            (other)opt            additional argument passed to swift invocation
-        """
+Usage: spmcli (run|build|test) (linux|mac|windows|ios|android)opt [other]opt
+        
+  (platform)opt         optional argument - current default = {platform}
+  (other)opt            additional argument passed to swift invocation
+"""
     if args_len <= 1:
         print(error_msg)
         exit(1)

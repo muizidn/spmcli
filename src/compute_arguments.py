@@ -1,4 +1,4 @@
-from sys import argv
+from sys import argv, exit
 from .check_platform import check_platform
 
 def compute_arguments(arg, config):
@@ -6,14 +6,17 @@ def compute_arguments(arg, config):
     platfrom = arg.platfrom if arg.platfrom else check_platform()
     other = arg.other
 
-    # print(subcommand)
-    # print(platfrom)
-    # print(other)
-    # print(config[platfrom])
-    # print(config[platfrom][subcommand])
+    if not platfrom in config.keys():
+        print(f"platform '{platfrom}' not defined in SPMCLI.yaml") 
+        exit(1)
+
     return __flatmap_config(config[platfrom], subcommand) + other
 
 def __flatmap_config(config, subcommand):
+    if not subcommand in config.keys():
+        print(f"subcommand '{subcommand}' not defined in SPMCLI.yaml") 
+        exit(1)
+
     final_arg = f"{subcommand} "
     config = config[subcommand]
     for option in config.keys():

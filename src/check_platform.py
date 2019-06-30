@@ -1,4 +1,4 @@
-from sys import platform
+from sys import platform, exit
 
 def check_platform():
     if platform == "linux" or platform == "linux2":

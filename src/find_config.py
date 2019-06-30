@@ -1,4 +1,5 @@
 import os, glob
+from sys import exit
 
 __CONFIGFILE_NAME__ = 'SPMCLI.yaml'
 __PACKAGE_SWIFT__ = 'Package.swift'
