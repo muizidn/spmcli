@@ -1,15 +1,15 @@
 ---
 linux:
   build:
-    Xswiftc:
-    Xcc:
-    Xcxx:
-    Xlinker:
+    -Xswiftc:
+    -Xcc:
+    -Xcxx:
+    -Xlinker:
       - "closse"
 mac:
   build:
-    Xswiftc:
-    Xcc:
-    Xcxx:
-    Xlinker:
+    -Xswiftc:
+    -Xcc:
+    -Xcxx:
+    -Xlinker:
       - "nodeWebkit"
