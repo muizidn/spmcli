@@ -1,6 +1,8 @@
 ---
 mac:
   build:
-    -Xcc:
-      - -DDEBUG
+    -Xcc: -DDEBUG
+    -Xswiftc:
+      - -DRELEASE
+      - -DINT_LONG
     --skip-update:

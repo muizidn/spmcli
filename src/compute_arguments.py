@@ -27,7 +27,8 @@ def __flatmap_config(config, subcommand):
         if not values:
             final_arg += f"{option} "
             continue
-            
+        if not type(values) is list:
+            values = [values]
         for value in values:
             if type(value) is list and not type(value) is str:
                 for arg in value:
