@@ -11,16 +11,18 @@ Now, it will be fun!
 # SPMCLI.yaml
 linux:
     build:
-        Xswiftc: 
+        -Xswiftc: 
             - "-target"
             - "-DDEBUG"
-        Xcc:
+        -Xcc:
             - "-DHAVE_INTTYPES_H"
 mac:
     build:
-        Xlinker:
+        -Xlinker:
             - "./libHello.a"
 ```
+See example in [SPMCLI.yaml](SPMCLI.yaml)
+
 2. Invoke `spmcli build`
 
 # How to install
