@@ -1,13 +1,6 @@
 ---
-linux:
-  build:
-    -Xlinker:
-      - "closse"
 mac:
   build:
-    -Xlinker:
-      - "nodeWebkit"
-      - "libz"
-      - "libiconv"
-  run:
-    --skip-build:
+    -Xcc:
+      - -DDEBUG
+    --skip-update:

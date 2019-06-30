@@ -5,9 +5,12 @@ def compute_arguments(arg, config):
     subcommand = arg.subcommand
     platfrom = arg.platfrom if arg.platfrom else check_platform()
     other = arg.other
+    if not config:
+        print("Configuration is empty")
+        exit(1)
 
     if not platfrom in config.keys():
-        print(f"platform '{platfrom}' not defined in SPMCLI.yaml") 
+        print(f"platform '{platfrom}' not defined in Configuration") 
         exit(1)
 
     return __flatmap_config(config[platfrom], subcommand) + other
@@ -26,10 +29,10 @@ def __flatmap_config(config, subcommand):
             continue
             
         for value in values:
-            if value is iter(value) and not value is str:
+            if type(value) is list and not type(value) is str:
                 for arg in value:
-                    final_arg += f"{option} {arg} "
+                    final_arg += f"{option} '{arg}' "
             else:
-                final_arg += f"{option} {value} "
+                final_arg += f"{option} '{value}' "
 
     return final_arg
