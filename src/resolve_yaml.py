@@ -4,7 +4,7 @@ import yaml
 from .find_config import __CONFIGFILE_NAME__, __PACKAGE_SWIFT__, find_config
 from .parse_yaml import parse_yaml
 
-__SPMCLI_LOCK__ = 'SPMCLI.lock'
+__SPMCLI_RESOLVED__ = 'SPMCLI.resolved'
 
 def resolve_yaml():
     root_config_path = find_config()
@@ -38,7 +38,7 @@ def calculate_resolved_config(configs, path):
         for config in configs:
             resolved_config = merge(resolved_config, config)
     
-    with open(f"{path}/{__SPMCLI_LOCK__}", "w") as f:
+    with open(f"{path}/{__SPMCLI_RESOLVED__}", "w") as f:
         yaml.dump(resolved_config, f)
     return resolved_config
 
