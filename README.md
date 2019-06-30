@@ -27,4 +27,5 @@ See example in [SPMCLI.yaml](SPMCLI.yaml)
 
 # How to install
 This helper script will be available through `pip`, make sure you have Python3 in your system.
-For now, just install it using `git`.
+
+For now, you can install using `git` and update your PATH to root directory or using PyInstaller and update PATH to dist directory.
