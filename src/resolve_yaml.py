@@ -55,6 +55,8 @@ def merge(obj1, obj2):
         for key in obj1.keys():
             if obj2.get(key):
                 table[key] = merge(obj1[key], obj2[key])
+            elif obj1[key]:
+                table[key] = obj1[key]
             else:
                 table[key] = None
         for key in obj2.keys():
@@ -62,18 +64,28 @@ def merge(obj1, obj2):
                 table[key] = obj2[key]
         return table
     else:
-        if not obj1_t is list and not obj2_t is list:
-            return remove_duplicate([obj1, obj2])
-        elif obj1_t is list and not obj2_t is list:
-            return remove_duplicate(obj1 + [obj2])
-        elif not obj1_t is list and obj2_t is list:
-            return remove_duplicate([obj1] + obj2)
-        elif obj1_t is list and obj2_t is list:
-            return remove_duplicate(obj1 + obj2)
-        else:
-            print(f"Type unrecognized: obj1 > {type(obj1)}, obj2 > {type(obj2)}")
-            print("Please check SPMCLI.yaml files")
-            exit(1)
-
-def remove_duplicate(obj):
-    return list(set(obj))
+        # This is the 'algorithm' that made SPMCLI feature possible
+        assert not (obj1_t is dict and obj2_t is dict)
+        # String and List value is converted to dict
+        if not obj1_t is dict:
+            if obj1_t is list:
+                obj1 = dict.fromkeys(obj1, None)
+            else:
+                obj1 = { obj1: None }
+        if not obj2_t is dict:
+            if obj2_t is list:
+                obj2 = dict.fromkeys(obj2, None)
+            else:
+                obj2 = { obj2: None }
+        # Dict to list
+        # If dict key has value then put it sequentially
+        # else put the key as argument
+        option_args = []
+        obj = { **obj1, **obj2 }
+        for (key, value) in obj.items():
+            if value:
+                option_args.append(key)
+                option_args.append(value)
+            else:
+                option_args.append(key)
+        return option_args
