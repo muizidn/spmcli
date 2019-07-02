@@ -30,10 +30,6 @@ def __flatmap_config(config, subcommand):
         if not type(values) is list:
             values = [values]
         for value in values:
-            if type(value) is list and not type(value) is str:
-                for arg in value:
-                    final_arg += f"{option} '{arg}' "
-            else:
-                final_arg += f"{option} '{value}' "
+            final_arg += f"{option} {value} "
 
     return final_arg
