@@ -21,3 +21,6 @@ supported_platforms = [
     __ANDROID__,
     __iOS__
 ]
+
+class GlobVar:
+    ProjectRootDir = ""

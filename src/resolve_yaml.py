@@ -3,10 +3,12 @@ from sys import exit
 import yaml
 from .find_config import __CONFIGFILE_NAME__, __PACKAGE_SWIFT__, find_config
 from .parse_yaml import parse_yaml
+from .global_variable import GlobVar
 
 def resolve_yaml():
     root_config_path = find_config()
     root_dir = os.path.dirname(root_config_path)
+    GlobVar.ProjectRootDir = root_dir
     checkout_path = root_dir + '/.build/checkouts'
     if not os.path.isdir(checkout_path):
         config = parse_yaml(root_config_path)
