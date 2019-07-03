@@ -45,6 +45,10 @@ export PATH=${PWD}/dist:$PATH
 
 See [HowItWorks](docs/HowItWorks.md)
 
+# Misc
+
+There's `xcproj` branch which has experimental feature for xcodeproj generation. But it has bugs which requires you to manually edit the generated xcconfig if the generated Xcodeproj fail.
+
 # Contributing
 SPMCLI is just a helper. Try to design your idea so it can be implemented in SwiftPM first, then apply it in SPMCLI. We hope SPM will provide nice way to set our configurations in the future.
 But you can always make an issue. Why not?
