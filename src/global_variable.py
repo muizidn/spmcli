@@ -1,11 +1,13 @@
 __BUILD__ = "build"
 __RUN__ = "run"
 __TEST__ = "test"
+__GEN_XPROJ__ = "xcproj"
 
 supported_commands = [
     __BUILD__,
     __RUN__,
-    __TEST__
+    __TEST__,
+    __GEN_XPROJ__
 ]
 
 __LINUX__ = "linux"

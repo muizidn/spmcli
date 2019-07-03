@@ -7,7 +7,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/spmcli",
             "args": [
-                "build"
+                "xcproj"
             ],
             "console": "integratedTerminal"
         }

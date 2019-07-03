@@ -4,13 +4,20 @@ from collections import namedtuple
 from .check_platform import check_platform
 from .global_variable import *
 
-__COMMAND_REGEX__ = r"(?:.*spmcli|spmcli) (run|build|test) *(linux|mac|windows|ios|android|) *(.*)"
+__COMMAND_REGEX__ = r""
+cmds = '|'.join(supported_commands)
+pltfms = '|'.join(supported_platforms)
+
+def __prepare():
+    global __COMMAND_REGEX__
+    __COMMAND_REGEX__ =  r"(?:.*spmcli|spmcli) (" + cmds + ") *("+ pltfms + "|) *(.*)"
 
 def ensure_args():
+    __prepare()
     args_len = len(argv)
     platform = check_platform()
     error_msg = f"""
-Usage: spmcli (run|build|test) (linux|mac|windows|ios|android)opt [other]opt
+Usage: spmcli ({cmds}) ({pltfms})opt [other]opt
         
   (platform)opt         optional argument - current default = {platform}
   (other)opt            additional argument passed to swift invocation
@@ -25,7 +32,7 @@ Usage: spmcli (run|build|test) (linux|mac|windows|ios|android)opt [other]opt
             print(error_msg)
             exit(1)
         else:
-            ARG = namedtuple('ARG', 'subcommand platfrom other')
+            ARG = namedtuple('ARG', 'subcommand platform other')
             return ARG(
                 match.group(1),
                 match.group(2),

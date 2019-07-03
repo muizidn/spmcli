@@ -99,3 +99,7 @@ linux:
     -Xlinker: *macos_tbd
     -Xswiftc:
       -DRELEASE:
+xcconfig:
+  name: macOS.xcconfig
+  keys:
+    OTHER_LDFLAGS: -Xlinker

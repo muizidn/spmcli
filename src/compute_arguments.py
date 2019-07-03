@@ -3,21 +3,21 @@ from .check_platform import check_platform
 
 def compute_arguments(arg, config):
     subcommand = arg.subcommand
-    platfrom = arg.platfrom if arg.platfrom else check_platform()
+    platfrom = arg.platfrom if arg.platform else check_platform()
     other = arg.other
     if not config:
         print("Configuration is empty")
         return f"{subcommand}"
 
     if not platfrom in config.keys():
-        print(f"platform '{platfrom}' not defined in Configuration") 
+        print(f"platform '{platfrom}' not defined in resolved config") 
         exit(1)
 
     return __flatmap_config(config[platfrom], subcommand) + other
 
 def __flatmap_config(config, subcommand):
     if not subcommand in config.keys():
-        print(f"subcommand '{subcommand}' not defined in SPMCLI.yaml") 
+        print(f"subcommand '{subcommand}' not defined in resolved config") 
         exit(1)
 
     final_arg = f"{subcommand} "

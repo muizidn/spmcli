@@ -6,10 +6,14 @@ from src.compute_arguments import compute_arguments
 from src.invoke_spm import invoke_spm
 from src.resolve_yaml import resolve_yaml
 from src.write_resolved_yaml import write_resolved_config_yaml
+from src.generate_xproj import generate_xproj
 
 args = ensure_args()
 config = resolve_yaml()
 data = write_resolved_config_yaml(config)
-spm_arg = compute_arguments(args, data)
-invoke_spm(spm_arg)
+if args.subcommand == 'xcproj':
+    generate_xproj(args, data)
+else:
+    spm_arg = compute_arguments(args, data)
+    invoke_spm(spm_arg)
 exit(0)
