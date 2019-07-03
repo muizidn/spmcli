@@ -7,7 +7,7 @@ def compute_arguments(arg, config):
     other = arg.other
     if not config:
         print("Configuration is empty")
-        exit(1)
+        return f"{subcommand}"
 
     if not platfrom in config.keys():
         print(f"platform '{platfrom}' not defined in Configuration") 
@@ -22,6 +22,8 @@ def __flatmap_config(config, subcommand):
 
     final_arg = f"{subcommand} "
     config = config[subcommand]
+    if not type(config) is dict:
+        return final_arg
     for option in config.keys():
         values = config[option]
         if not values:

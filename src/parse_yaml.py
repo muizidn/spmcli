@@ -16,5 +16,6 @@ def parse_yaml(path):
     str_data = str_data.replace('${PWD}', semi_abspath)
     assert not "${PWD}" in str_data
     data = ast.literal_eval(str_data)
+    data = {} if data is None else data
     assert type(data) is dict
     return data
