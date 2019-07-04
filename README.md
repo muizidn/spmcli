@@ -52,3 +52,7 @@ There's `xcproj` branch which has experimental feature for xcodeproj generation.
 # Contributing
 SPMCLI is just a helper. Try to design your idea so it can be implemented in SwiftPM first, then apply it in SPMCLI. We hope SPM will provide nice way to set our configurations in the future.
 But you can always make an issue. Why not?
+
+# Other Mature Tool?
+You can use [facebook buck](https://github.com/facebook/buck) or [google bazel](https://github.com/bazelbuild/bazel) which is extensible, fast, and has so many features.
+Or, if you like, you can use Rakefile.
